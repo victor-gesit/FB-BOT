@@ -29,16 +29,27 @@ app.get("/webhook", function(req,res){
 app.post('/webhook', function(req,res){
 	// Make sure this is a page subscription
 	if(req.body.object == 'page'){
-		// Iterate over each messaging event
-		entry.messaging.forEach(function(event){
-			if(event.postback){
-				processPostback(event);
-			}
-		});
-	};
+		// Iterate over each entry
+		// There may be multiple entries if batched
 
-	res.sendStatus(200);
-})
+		req.body.entry.forEach(function(entry){
+			// Iterate over each entry
+			// There may be multiple entries if batched
+
+			entry.messaging.forEach(function(event){
+				if(event.postback){
+					processPostback(event);
+				}
+			});
+
+		});
+
+		res.sendStatus(200);
+
+	}
+
+	
+});
 
 function processPostback(event){
 	var senderId = event.sender.id;
