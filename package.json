@@ -1,0 +1,31 @@
+{
+  "name": "fb-bot",
+  "version": "1.0.0",
+  "description": "A FB Messenger Bot",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victor4l/FB-BOT.git"
+  },
+  "keywords": [
+    "FB",
+    "Messenger",
+    "Bot"
+  ],
+  "author": "Victor Idongesit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victor4l/FB-BOT/issues"
+  },
+  "homepage": "https://github.com/victor4l/FB-BOT#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongoose": "^4.8.6",
+    "request": "^2.81.0"
+  }
+}
