@@ -26,6 +26,8 @@ app.get("/webhook", function(req,res){
 	}
 })
 
+// All callbacks for Messenger will be POST-ed here
+
 app.post('/webhook', function(req,res){
 	// Make sure this is a page subscription
 	if(req.body.object == 'page'){
@@ -33,8 +35,7 @@ app.post('/webhook', function(req,res){
 		// There may be multiple entries if batched
 
 		req.body.entry.forEach(function(entry){
-			// Iterate over each entry
-			// There may be multiple entries if batched
+			// Iterate over each messaging event
 
 			entry.messaging.forEach(function(event){
 				if(event.postback){
@@ -76,7 +77,7 @@ function processPostback(event){
 				greeting = 'Hi ' + name + '.';
 			}
 			var message = greeting + 'I\'m the Gotcha Bot. Let\'s fool around. What would you like to do? ';
-			sendMessage(senderaId, {text: message});
+			sendMessage(senderId, {text: message});
 		});
 	}
 }
